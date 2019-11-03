@@ -1,6 +1,16 @@
+  
 import React from 'react'
+import { battle } from '../utils/api'
 
 export default class Results extends React.Component {
+  componentDidMount () {
+    const { playerOne, playerTwo } = this.props
+
+    battle([ playerOne, playerTwo ])
+      .then((players) => {
+        console.log('data: ', players)
+      })
+  }
   render() {
     return (
       <div>
@@ -9,4 +19,4 @@ export default class Results extends React.Component {
       </div>
     )
   }
-} 
+}
